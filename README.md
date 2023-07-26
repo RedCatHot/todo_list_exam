@@ -7,7 +7,7 @@ Django project for managing tasks and tags
 Python3 must be already installed
 
 shell  
-git clone https://github.com/volodymyr-komarnyckyi/todo_list  
+git clone https://github.com/RedCatHot/todo_list_exam/tree/develop 
 cd todo_list  
 python -m venv venv  
 venv\Scripts\activate (on Windows)  
@@ -23,4 +23,12 @@ password: Whatislove123
 
 ## Demo
 
+Home page
+![img.png](img.png)  
+  
+Tags list page
+![img_1.png](img_1.png)  
+  
+Tasks list page
+![img_2.png](img_2.png)
 

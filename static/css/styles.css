@@ -3,6 +3,7 @@ body {
   background-color: #f8f8f8;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 .container-fluid {
@@ -24,6 +25,15 @@ h1 {
   font-size: 32px;
   margin-bottom: 20px;
   color: #336699;
+}
+
+h1.display-4 {
+  color: #000; /* Змінено колір тексту на чорний (#000) */
+  margin-bottom: 20px;
+}
+
+p.lead {
+  color: #fff; /* Змінено колір тексту на чорний (#000) */
 }
 
 .card {
