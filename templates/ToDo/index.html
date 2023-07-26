@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto text-center">
+      <h1 class="display-4 mt-5">Welcome to the Todo List!</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title">Number of Tags</h3>
+          <p class="card-text">{{ num_tags }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h3 class="card-title">Number of Tasks</h3>
+          <p class="card-text">{{ num_tasks }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-8 mx-auto text-center">
+      <p class="lead">You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
