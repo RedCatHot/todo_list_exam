@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Task List</h1>
+      </div>
+      <div class="col-md-4 text-right">
+        <a class="btn btn-primary" href="{% url 'ToDo:task-create' %}">Create New Task</a>
+      </div>
+    </div>
+
+    {% if task_list %}
+      <div class="tag-list-container">
+        {% for task in task_list %}
+          <div class="tag-item">
+            <div class="tag-name">{{ task.content }}</div>
+            <div class="tag-details">
+              <p><strong>Is done:</strong> {{ task.is_done }}</p>
+              <hr>
+              <p><strong>Created at:</strong> {{ task.created_datetime }}</p>
+              {% if task.deadline_datetime %}
+                <p><strong>Deadline:</strong> {{ task.deadline_datetime }}</p>
+              {% endif %}
+              <hr>
+              <p><strong>Tags:</strong></p>
+              {% for tag in task.tags.all %}
+                <p>
+                  {{ tag.name }}
+                </p>
+              {% empty %}
+                <p>There are no tags!</p>
+              {% endfor %}
+
+            </div>
+            <div class="tag-buttons">
+              <a href="{% url "ToDo:task-detail" pk=task.id %}" class="btn btn-tag-details">Details</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="mt-4">There are tasks.</p>
+    {% endif %}
+  </div>
+{% endblock %}

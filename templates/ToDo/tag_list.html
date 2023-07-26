@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Tag List</h1>
+      </div>
+      <div class="col-md-4 text-right">
+        <a href="{% url 'ToDo:tag-create' %}" class="btn btn-primary">Create New Tag</a>
+      </div>
+    </div>
+
+    {% if tag_list %}
+      <div class="task-type-container">
+        {% for tag in tag_list %}
+          <div class="task-type-item">
+            <div class="task-type-name">{{ tag.name }}</div>
+            <div class="task-type-list-name">
+              {% for task in tag.tasks.all %}
+                <hr>
+                <p>Tasks:</p>
+                <p><strong>Content:</strong> <a href="{% url "ToDo:task-detail" pk=task.id %}">{{ task.content }}</a></p>
+              {% empty %}
+                <p>There are no tasks!</p>
+              {% endfor %}
+            </div>
+            <div class="task-type-buttons">
+              <a href="{% url 'ToDo:tag-update' pk=tag.id %}" class="btn btn-update">Update</a>
+              <a href="{% url 'ToDo:tag-delete' pk=tag.id %}" class="btn btn-delete">Delete</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="mt-4">There are no tags.</p>
+    {% endif %}
+  </div>
+{% endblock %}

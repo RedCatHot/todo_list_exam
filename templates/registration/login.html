@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<style>
+  body {
+    overflow-y: hidden;
+  }
+
+  .container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .card-body {
+    padding: 40px;
+  }
+
+  .card-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .card-text {
+    font-size: 1.2rem;
+    color: #888;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+</style>
+
+<div class="container">
+  <div class="card bg-dark text-white" style="border-radius: 1rem;">
+    <div class="card-body">
+      <h2 class="card-title text-center">Login page</h2>
+      <p class="card-text text-center">Login to access our delicious offerings!</p>
+
+      <form method="post" action="{% url 'login' %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="text-center mt-4">
+          <button class="btn btn-primary btn-lg px-5" type="submit">Login</button>
+          <input type="hidden" name="next" value="{{ next }}">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
